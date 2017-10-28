@@ -26,20 +26,21 @@ data class AlexaRequest(
 
     data class UserAttributes(
       val userId: String,
-      val accessToken: String
+      val accessToken: String? = null
     )
   }
 
   data class RequestAttributes(
     val type: String,
     val requestId: String,
+    val locale: String,
     val timestamp: String,
     val intent: IntentAttributes,
     val reason: String
   ) {
     data class IntentAttributes(
       val name: String,
-      val slots: Array<Any?>
+      val slots: Map<String, Any?>
     )
   }
 }
