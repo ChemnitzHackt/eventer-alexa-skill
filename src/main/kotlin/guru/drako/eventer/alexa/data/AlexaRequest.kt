@@ -10,7 +10,7 @@ data class AlexaRequest(
   data class SessionAttributes(
     val sessionId: String,
     val application: ApplicationAttributes,
-    val attributes: SessionCustomAttributes,
+    val attributes: SessionCustomAttributes? = null,
     val user: UserAttributes,
 
     @field:JsonProperty("new")
