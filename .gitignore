@@ -1,0 +1,24 @@
+# idea
+.idea/inspectionProfiles/
+.idea/libraries/
+.idea/modules/
+.idea/checkstyle-idea.xml
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/kotlinc.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+*.iml
+
+# build
+build/
+out/
+
+# gradle
+.gradle/
+
+# MacOS
+.DS_Store
+
