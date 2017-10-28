@@ -1,7 +1,7 @@
 package guru.drako.eventer.alexa.controllers
 
-import guru.drako.eventer.alexa.data.AlexaRequest
-import guru.drako.eventer.alexa.data.AlexaResponse
+import guru.drako.eventer.alexa.data.Request
+import guru.drako.eventer.alexa.data.Response
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.RequestBody
@@ -16,8 +16,9 @@ class AlexaController {
   }
 
   @RequestMapping("api/alexa/eventer", method = [RequestMethod.POST])
-  fun eventerSkill(@RequestBody alexaRequest: AlexaRequest) : AlexaResponse {
+  fun eventerSkill(@RequestBody alexaRequest: Request) : Response {
     logger.info("Got request: {}", alexaRequest)
-    return AlexaResponse("Hello world")
+
+    return Response()
   }
 }
