@@ -40,6 +40,6 @@ class AlexaController {
 
     logger.info("Handling ListIntent for location: {} date: {}", location, moment)
 
-    return AlexaResponse(response = Response(outputSpeech = OutputSpeech(text = "Es ist nichts los.")))
+    return AlexaResponse.plainText("Es ist nichts los.")
   }
 }
