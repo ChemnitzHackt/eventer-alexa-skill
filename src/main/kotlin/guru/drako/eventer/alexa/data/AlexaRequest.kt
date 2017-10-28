@@ -36,7 +36,7 @@ data class AlexaRequest(
     val locale: String,
     val timestamp: String,
     val intent: IntentAttributes,
-    val reason: String
+    val reason: String? = null
   ) {
     data class IntentAttributes(
       val name: String,
