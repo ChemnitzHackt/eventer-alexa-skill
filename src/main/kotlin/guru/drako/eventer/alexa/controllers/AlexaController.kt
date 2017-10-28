@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 @RestController
@@ -36,7 +37,8 @@ class AlexaController {
 
   private fun onListIntent(slots: Map<String, KeyValue>?): AlexaResponse {
     val location: String = slots?.get("where")?.value ?: "chemnitz"
-    val moment: String = slots?.get("when")?.value ?: LocalTime.now().format(DateTimeFormatter.ISO_DATE)
+    val moment: String = slots?.get("when")?.value
+      ?: LocalTime.now().format(DateTimeFormatter.ISO_DATE.withZone(ZoneId.of("UTC")))
 
     logger.info("Handling ListIntent for location: {} date: {}", location, moment)
 
