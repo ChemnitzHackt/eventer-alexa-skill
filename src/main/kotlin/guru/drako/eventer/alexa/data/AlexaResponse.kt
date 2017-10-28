@@ -24,7 +24,7 @@ data class AlexaResponse(
   )
 
   data class SessionAttributes(
-    var memberId: Int = 0
+    var memberId: Int? = null
   )
 
   data class ResponseAttributes(

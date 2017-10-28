@@ -21,7 +21,7 @@ data class AlexaRequest(
     )
 
     data class SessionCustomAttributes(
-      val memberId: String
+      val memberId: Int? = null
     )
 
     data class UserAttributes(
