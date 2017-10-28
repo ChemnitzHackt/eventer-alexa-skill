@@ -61,10 +61,6 @@ dependencies {
   compile "com.h2database:h2:$h2_version"
 }
 
-configurations {
-  all*.exclude module : 'spring-boot-starter-logging'
-}
-
 compileKotlin {
   kotlinOptions {
     jvmTarget = '1.8'
