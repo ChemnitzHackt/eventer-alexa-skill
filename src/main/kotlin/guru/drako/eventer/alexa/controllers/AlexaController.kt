@@ -22,8 +22,14 @@ class AlexaController {
   }
 
   @RequestMapping("api/alexa/eventer", method = [RequestMethod.POST])
-  fun eventerSkill(@RequestBody alexaRequest: AlexaRequest): AlexaResponse = when (alexaRequest.request.type) {
-    IntentRequest -> onIntent(alexaRequest.request.intent!!)
+  fun eventerSkill(@RequestBody alexaRequest: AlexaRequest): AlexaResponse {
+    val response = when (alexaRequest.request.type) {
+      IntentRequest -> onIntent(alexaRequest.request.intent!!)
+    }
+
+    logger.info("Handled request: {}\nResponded with: {}", alexaRequest, response)
+
+    return response
   }
 
   private fun onIntent(intent: Intent): AlexaResponse = when (intent.name) {
