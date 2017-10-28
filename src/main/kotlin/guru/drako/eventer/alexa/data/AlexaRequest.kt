@@ -40,7 +40,7 @@ data class AlexaRequest(
   ) {
     data class IntentAttributes(
       val name: String,
-      val slots: Map<String, Any?>
+      val slots: Map<String, Any?>? = null
     )
   }
 }
