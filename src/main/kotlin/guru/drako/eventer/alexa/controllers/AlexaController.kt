@@ -38,6 +38,8 @@ class AlexaController {
     val location: String = slots?.get("where")?.value ?: "chemnitz"
     val moment: String = slots?.get("when")?.value ?: LocalTime.now().format(DateTimeFormatter.ISO_DATE)
 
+    logger.info("Handling ListIntent for location: {} date: {}", location, moment)
+
     return AlexaResponse(response = Response(outputSpeech = OutputSpeech(text = "Es ist nichts los.")))
   }
 }
