@@ -45,6 +45,7 @@ dependencies {
   testCompile 'org.jetbrains.kotlin:kotlin-test-junit'
 
   compile "org.springframework.boot:spring-boot-starter-web:$springboot_version"
+  compile "org.springframework.boot:spring-boot-starter-tomcat:$springboot_version"
   compile "org.springframework.boot:spring-boot-starter-data-jpa:$springboot_version"
   testCompile "org.springframework.boot:spring-boot-starter-test:$springboot_version"
 
