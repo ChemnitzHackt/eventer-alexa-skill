@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.ZoneOffset
+import java.time.*
 import java.time.format.DateTimeFormatter
 
 @RestController
@@ -43,20 +41,22 @@ class AlexaController {
 
   private fun onListIntent(slots: Map<String, KeyValue>?): AlexaResponse {
     val location: String = slots?.get("where")?.value ?: "chemnitz"
-    val moment: LocalDateTime = slots?.get("when")?.value?.let { LocalDate.parse(it).atTime(0, 0) }
-      ?: LocalDateTime.now(ZoneOffset.UTC)
+    val moment: ZonedDateTime = slots?.get("when")?.value?.let {
+      LocalDate.parse(it).atTime(0, 0).atZone(ZoneId.of("UTC"))
+    } ?: ZonedDateTime.now(ZoneId.of("UTC"))
+
     logger.info("Handling ListIntent for location: {} date: {}", location, moment)
 
     if (location != "chemnitz") {
       return AlexaResponse.plainText("Aktuelle können nur Veranstaltungen in Chemnitz gesucht werden.")
     }
 
-    val start: Long = moment.toEpochSecond(ZoneOffset.UTC)
-    val end: Long = moment
+    val start: Long = moment.toInstant().toEpochMilli()
+    val end: Long = moment.toLocalDateTime()
       .withHour(23)
       .withMinute(59)
       .withSecond(59)
-      .toEpochSecond(ZoneOffset.UTC)
+      .toInstant(ZoneOffset.UTC).toEpochMilli()
 
     val requestString = "https://api.my-eventer.de/v1/events?starts_at_min=$start&starts_at_max=$end"
     logger.info("Sending eventer request: {}", requestString)
