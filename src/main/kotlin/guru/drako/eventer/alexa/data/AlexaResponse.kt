@@ -20,7 +20,7 @@ data class AlexaResponse(
     fun speak(cardText: String, ssml: String, shouldEndSession: Boolean = true) = AlexaResponse(
       response = Response(
         shouldEndSession = shouldEndSession,
-        outputSpeech = OutputSpeech(type = Type.Ssml, text = null, ssml = "<speak>$ssml</speak>"),
+        outputSpeech = OutputSpeech(type = Type.SSML, text = null, ssml = "<speak>$ssml</speak>"),
         card = if (shouldEndSession) Card(content = cardText) else null
       )
     )
@@ -38,7 +38,7 @@ data class AlexaResponse(
     ) {
       enum class Type {
         PlainText,
-        Ssml
+        SSML
       }
     }
 
