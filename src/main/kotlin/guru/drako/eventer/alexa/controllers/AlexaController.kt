@@ -58,10 +58,13 @@ class AlexaController {
       .withSecond(59)
       .toEpochSecond(ZoneOffset.UTC)
 
+    val requestString = "https://api.my-eventer.de/v1/events?starts_at_min=$start&starts_at_max=$end"
+    logger.info("Sending eventer request: {}", requestString)
+
     val rest = RestTemplate()
     val response: EventerResponse? =
       rest.getForObject(
-        "https://api.my-eventer.de/v1/events?starts_at_min=$start&starts_at_max=$end",
+        requestString,
         EventerResponse::class.java
       )
 
