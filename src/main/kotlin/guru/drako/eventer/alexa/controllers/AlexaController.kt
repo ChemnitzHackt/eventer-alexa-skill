@@ -4,6 +4,7 @@ import guru.drako.eventer.alexa.data.AlexaRequest
 import guru.drako.eventer.alexa.data.AlexaRequest.Request.Intent
 import guru.drako.eventer.alexa.data.AlexaRequest.Request.Intent.KeyValue
 import guru.drako.eventer.alexa.data.AlexaRequest.Request.Type.IntentRequest
+import guru.drako.eventer.alexa.data.AlexaRequest.Request.Type.SessionEndedRequest
 import guru.drako.eventer.alexa.data.AlexaResponse
 import guru.drako.eventer.alexa.data.EventerResponse
 import guru.drako.eventer.alexa.errors.UnknownIntent
@@ -28,6 +29,7 @@ class AlexaController {
   fun eventerSkill(@RequestBody alexaRequest: AlexaRequest): AlexaResponse {
     val response = when (alexaRequest.request.type) {
       IntentRequest -> onIntent(alexaRequest.request.intent!!)
+      SessionEndedRequest -> AlexaResponse()
     }
 
     logger.info("Handled request: {}\nResponded with: {}", alexaRequest, response)

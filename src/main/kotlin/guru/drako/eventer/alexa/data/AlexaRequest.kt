@@ -28,10 +28,30 @@ data class AlexaRequest(
     val requestId: String,
     val intent: Intent? = null,
     val locale: String,
-    val timestamp: String
+    val timestamp: String,
+    val reason: Reason? = null,
+    val error: Error? = null
   ) {
     enum class Type {
-      IntentRequest
+      IntentRequest,
+      SessionEndedRequest
+    }
+
+    enum class Reason {
+      USER_INITIATED,
+      ERROR,
+      EXCEEDED_MAX_REPROMPTS
+    }
+
+    data class Error(
+      val type: Type,
+      val message: String
+    ) {
+      enum class Type {
+        INVALID_RESPONSE,
+        DEVICE_COMMUNICATION_ERROR,
+        INTERNAL_ERROR
+      }
     }
 
     data class Intent(
