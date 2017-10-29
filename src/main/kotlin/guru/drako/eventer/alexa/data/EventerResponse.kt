@@ -9,7 +9,7 @@ data class EventerResponse(
   data class Event(
     val id: String,
     val title: String,
-    val description: String,
+    val description: String? = null,
     @field:JsonProperty("google_place_id")
     val googlePlaceId: String,
     @field:JsonProperty("starts_at")

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.HtmlUtils
 import java.time.*
-import java.time.format.DateTimeFormatter
 
 @RestController
 class AlexaController {
