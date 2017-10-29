@@ -2,6 +2,7 @@ package guru.drako.eventer.alexa.data
 
 import guru.drako.eventer.alexa.data.AlexaResponse.Response.Card
 import guru.drako.eventer.alexa.data.AlexaResponse.Response.OutputSpeech
+import guru.drako.eventer.alexa.data.AlexaResponse.Response.OutputSpeech.Type
 
 data class AlexaResponse(
   val version: String = "1.0",
@@ -13,6 +14,14 @@ data class AlexaResponse(
         shouldEndSession = shouldEndSession,
         outputSpeech = OutputSpeech(text = text),
         card = if (shouldEndSession) Card(content = text) else null
+      )
+    )
+
+    fun speak(cardText: String, ssml: String, shouldEndSession: Boolean = true) = AlexaResponse(
+      response = Response(
+        shouldEndSession = shouldEndSession,
+        outputSpeech = OutputSpeech(type = Type.Ssml, text = null, ssml = "<speak>$ssml</speak>"),
+        card = if (shouldEndSession) Card(content = cardText) else null
       )
     )
   }
