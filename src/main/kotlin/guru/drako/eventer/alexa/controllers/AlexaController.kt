@@ -42,7 +42,7 @@ class AlexaController {
 
   private fun onListIntent(slots: Map<String, KeyValue>?): AlexaResponse {
     val location: String = slots?.get("where")?.value ?: "chemnitz"
-    val moment: LocalDateTime = LocalDateTime.parse(slots?.get("when")?.value)
+    val moment: LocalDateTime = slots?.get("when")?.value?.let { LocalDateTime.parse(it) }
       ?: LocalDateTime.now(ZoneOffset.UTC)
     logger.info("Handling ListIntent for location: {} date: {}", location, moment)
 
