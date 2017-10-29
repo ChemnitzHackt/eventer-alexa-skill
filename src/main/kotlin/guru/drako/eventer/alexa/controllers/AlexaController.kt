@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.util.HtmlUtils
 import java.time.*
 import java.time.format.DateTimeFormatter
 
@@ -75,7 +76,7 @@ class AlexaController {
     }
 
     val events = response.events.distinctBy { it.title }
-    val eventString = events.asSequence().map { "<s>${it.title}</s>" }.joinToString(", ")
+    val eventString = events.asSequence().map { "<s>${HtmlUtils.htmlEscape(it.title)}</s>" }.joinToString(", ")
 
     val prefix: String =
       if (events.size == 1) "Es wurde eine Veranstaltung"
@@ -83,7 +84,7 @@ class AlexaController {
 
     return AlexaResponse.speak(
       cardText = "$prefix gefunden.",
-      ssml = "<s>$prefix:</s> $eventString"
+      ssml = "<s>$prefix gefunden:</s> $eventString"
     )
   }
 }
