@@ -59,7 +59,7 @@ class AlexaController {
 
     val rest = RestTemplate()
     val response: EventerResponse? =
-      rest.getForObject("/v1/events?starts_at_min=$start&starts_at_max=$end", EventerResponse::class.java)
+      rest.getForObject("https://api.my-eventer.de/v1/events?starts_at_min=$start&starts_at_max=$end", EventerResponse::class.java)
 
     if (response == null || response.events.size == 0) {
       return AlexaResponse.plainText("Es ist nichts los.")
