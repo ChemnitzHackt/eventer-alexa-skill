@@ -77,7 +77,7 @@ class AlexaController {
     }
 
     val events = response.events.distinctBy { it.title }
-    val eventString = events.asSequence().map { "<s>${HtmlUtils.htmlEscape(it.title)}</s>" }.joinToString(", ")
+    val eventString = events.asSequence().map { "<s>${HtmlUtils.htmlEscape(it.title, "UTF-8")}</s>" }.joinToString(", ")
 
     val prefix: String =
       if (events.size == 1) "Es wurde eine Veranstaltung"
