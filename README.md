@@ -1,6 +1,6 @@
 # Eventer Alexa Skill
 
-[![license](https://img.shields.io/github/license/Drako/eventer-alexa-skill.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
+[![license](https://img.shields.io/github/license/ChemnitzHackt/eventer-alexa-skill.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
 This is the Eventer Alexa Skill developed for the ChemnitzHackt hackathon 2017.
 
@@ -13,5 +13,5 @@ As the primary audience is German the Skill is currently also German.
 
 Branch | Status
 --- | ---
-master | [![Build Status](https://travis-ci.org/Drako/eventer-alexa-skill.svg?branch=master)](https://travis-ci.org/Drako/eventer-alexa-skill)
+master | [![Build Status](https://travis-ci.org/ChemnitzHackt/eventer-alexa-skill.svg?branch=master)](https://travis-ci.org/ChemnitzHackt/eventer-alexa-skill)
 
